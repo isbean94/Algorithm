@@ -7,6 +7,7 @@ for t in range(1,int(input())+1):
     dy = [-1, 1, 0, 0]
 
     tunnel_dict = {0: [], 1:[0,1,2,3], 2:[0,1], 3:[2,3], 4:[0,3], 5:[1,3], 6:[1,2], 7:[0,2]}
+    move_dic = {0: [1,2,5,6], 1:[1,2,4,7], 2:[1,3,4,5], 3:[1,3,6,7]}
 
     q1 = [(R,C)]
     q2 = []
@@ -24,22 +25,7 @@ for t in range(1,int(input())+1):
                 
                 if (0 <= y+dy[d] < N) and (0 <= x+dx[d] < M) and hole_map[y+dy[d]][x+dx[d]]:
                     
-                    if (d == 0) and (hole_map[y+dy[d]][x+dx[d]] in [1,2,5,6]):
-                        q2.append((y+dy[d],x+dx[d]))
-                        result.add((y+dy[d],x+dx[d]))
-                        hole_map[state[0]][state[1]] = 0
-
-                    elif (d == 1) and (hole_map[y+dy[d]][x+dx[d]] in [1,2,4,7]):
-                        q2.append((y+dy[d],x+dx[d]))
-                        result.add((y+dy[d],x+dx[d]))
-                        hole_map[state[0]][state[1]] = 0
-
-                    elif (d == 2) and (hole_map[y+dy[d]][x+dx[d]] in [1,3,4,5]):
-                        q2.append((y+dy[d],x+dx[d]))
-                        result.add((y+dy[d],x+dx[d]))
-                        hole_map[state[0]][state[1]] = 0
-
-                    elif (d == 3) and (hole_map[y+dy[d]][x+dx[d]] in [1,3,6,7]):
+                    if hole_map[y+dy[d]][x+dx[d]] in move_dic[d]:
                         q2.append((y+dy[d],x+dx[d]))
                         result.add((y+dy[d],x+dx[d]))
                         hole_map[state[0]][state[1]] = 0
