@@ -24,5 +24,8 @@ for t in range(1,int(input())+1):
             if result < move_cnt:
                 result = move_cnt
                 result_idx = (i,j)
+            if result == move_cnt:
+                if square[i][j] < square[result_idx[0]][result_idx[1]]:
+                    result_idx = (i,j)
 
     print("#{0} {1} {2}".format(t, square[result_idx[0]][result_idx[1]], result))
