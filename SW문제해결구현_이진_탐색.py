@@ -12,21 +12,21 @@ for t in range(1, T+1):
     def search(l, r, num, check):
         if (l > r):
             return False
-
-        m = (l+r)//2
-
-        if (num == A[m]):
-            return True
         else:
+            m = (l+r)//2
 
-            if num > A[m]:
-                if check == 1:
-                    return False
-                return search(m+1, r, num, 1)
-            elif num < A[m]:
-                if check == 0:
-                    return False
-                return search(l, m-1, num, 0)
+            if (num == A[m]):
+                return True
+            else:
+                
+                if num > A[m]:
+                    if check == 1:
+                        return False
+                    return search(m+1, r, num, 1)
+                elif num < A[m]:
+                    if check == 0:
+                        return False
+                    return search(l, m-1, num, 0)
 
     result = 0
 
